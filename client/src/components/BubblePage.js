@@ -26,7 +26,7 @@ const BubblePage = () => {
         authAxios
             .get("http://localhost:5000/api/colors")
             .then(response => {
-                console.log('Axios with Auth response', response)
+                // console.log('Axios with Auth response', response)
                 setColorList(response.data);
             });
 

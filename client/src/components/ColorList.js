@@ -3,9 +3,9 @@ import axios from "axios";
 
 const axiosWithAuth = () => {
   return axios.create({
-      headers: {
-          authorization: localStorage.getItem("token")
-      }
+    headers: {
+      authorization: localStorage.getItem("token")
+    }
   });
 };
 
@@ -19,17 +19,35 @@ const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
-  const editColor = color => {
+  const editColor = (color) => {
     setEditing(true);
     setColorToEdit(color);
   };
 
-  const saveEdit = e => {
+
+
+  const saveEdit = (e, id, updatedColor) => {
     e.preventDefault();
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    
+
+    const authAxios = axiosWithAuth();
+    authAxios
+      .put(`http://localhost:5000/api/colors/${id}`, updatedColor)
+      .then(response => {
+        console.log('put request', response.data)
+        updateColors(response.data)
+      })
+      .catch(err => console.log(err))
   };
+    
+    
+
+  // if (colors.length === 0) {
+  //   return <h2>Loading data...</h2>;
+  // }
 
   const deleteColor = color => {
     // make a delete request to delete this color
@@ -43,11 +61,11 @@ const ColorList = ({ colors, updateColors }) => {
           <li key={color.color} onClick={() => editColor(color)}>
             <span>
               <span className="delete" onClick={e => {
-                    e.stopPropagation();
-                    deleteColor(color)
-                  }
-                }>
-                  x
+                e.stopPropagation();
+                deleteColor(color)
+              }
+              }>
+                x
               </span>{" "}
               {color.color}
             </span>
@@ -67,7 +85,7 @@ const ColorList = ({ colors, updateColors }) => {
               onChange={e =>
                 setColorToEdit({ ...colorToEdit, color: e.target.value })
               }
-              value={colorToEdit.color}
+              value={colorToEdit.color} 
             />
           </label>
           <label>
