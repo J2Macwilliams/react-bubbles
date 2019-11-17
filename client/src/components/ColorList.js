@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const axiosWithAuth = () => {
+  return axios.create({
+      headers: {
+          authorization: localStorage.getItem("token")
+      }
+  });
+};
+
 const initialColor = {
   color: "",
   code: { hex: "" }
