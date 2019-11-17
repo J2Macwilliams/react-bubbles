@@ -11,7 +11,7 @@ const Navbar = () => {
             <NavLink exact to='/' activeClassName="activeNavButton" className="navLink" >
                 Home
         </NavLink>
-            <NavLink to='/protected' activeClassName="activeNavButton" className="navLink" >Friends</NavLink>
+            <NavLink to='/protected' activeClassName="activeNavButton" className="navLink" >Bubbles</NavLink>
 
 
         </nav>
