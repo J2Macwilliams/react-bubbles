@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className="navbar">
 
             <NavLink exact to='/' activeClassName="activeNavButton" className="navLink" >
-                Home
+                Login
         </NavLink>
             <NavLink to='/protected' activeClassName="activeNavButton" className="navLink" >Bubbles</NavLink>
 
