@@ -18,6 +18,23 @@ const BubblePage = () => {
   // set that data to the colorList state property
 
 
+       
+
+  useEffect(() => {
+     if (!localStorage.getItem("token")) {
+            console.error("Please Login!!!");
+        } else {
+            console.info("We are logged in");
+        }
+        const authAxios = axiosWithAuth();
+        authAxios
+            .get("http://localhost:5000/api/colors")
+            .then(response => {
+                console.log('Axios with Auth response', response)
+                setColorList(response.data);
+            });
+
+  },[]);
 
   return (
     <>
