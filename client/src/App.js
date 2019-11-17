@@ -12,18 +12,13 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <NavBar />
+        <NavBar />
         <Switch>
-        <PrivateRoute path="/protected" >
+          <PrivateRoute path="/protected" >
             <BubblePage />
           </PrivateRoute>
           <Route exact path="/" component={Login} />
           <Route component={Login} />
-          {/* 
-          Build a PrivateRoute component that will 
-          display BubblePage when you're authenticated 
-        */}
-         
         </Switch>
       </div>
     </Router>
