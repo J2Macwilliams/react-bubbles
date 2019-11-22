@@ -26,11 +26,11 @@ export class LoginForm extends Component {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5002/api/login",
+        "http://localhost:5000/api/login",
         this.state.credentials
       )
       .then(response => {
-        console.log("response", response);
+        // console.log("response", response);
         const { data } = response;
 
         localStorage.setItem("token", data.payload);
