@@ -13,12 +13,39 @@ body,
 .App {
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  display: flex;
+  // display: flex;
 
   svg {
     height: 100%;
   }
 }
+
+.navbar {
+  align-items: center;
+  border-bottom: 3px solid rgb(221, 221, 221);
+  background: #8a2be2;
+  display: flex;
+  height: 70px;
+  justify-content: space-around;
+  padding: 0 3%;
+  width: 100%;
+  -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+}
+
+.navLink {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #9a99dd;
+}
+.navbar > a.activeNavButton {
+  background-color: #9a99dd;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  border-radius: 8px;
+} 
 
 .spacer {
   height: 100%;

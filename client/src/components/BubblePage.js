@@ -4,10 +4,32 @@ import axios from "axios";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
+const axiosWithAuth = () => {
+  return axios.create({
+      headers: {
+          authorization: localStorage.getItem("token")
+      }
+  });
+};
+
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
-  // fetch your colors data from the server when the component mounts
-  // set that data to the colorList state property
+  
+
+  useEffect(() => {
+     if (!localStorage.getItem("token")) {
+            console.error("Please Login!!!");
+        } else {
+            console.info("We are logged in");
+        }
+        const authAxios = axiosWithAuth();
+        authAxios
+            .get("http://localhost:5000/api/colors")
+            .then(response => {
+                setColorList(response.data);
+            });
+
+  },[]);
 
   return (
     <>
