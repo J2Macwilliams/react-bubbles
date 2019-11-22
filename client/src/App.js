@@ -14,9 +14,8 @@ function App() {
       <div className="App">
         <NavBar />
         <Switch>
-          <PrivateRoute path="/protected" >
-            <BubblePage />
-          </PrivateRoute>
+          <PrivateRoute path="/protected" component={BubblePage} />
+
           <Route exact path="/" component={Login} />
           <Route component={Login} />
         </Switch>
